@@ -6,8 +6,13 @@ class Carousel extends Component {
     active: 0,
   };
 
-  static getDerivedStateFromProps() {
+  static getDerivedStateFromProps({ media }) {
     let photos = ["https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"];
+
+    if (media.length) {
+      photos = media.map(({ large }) => large);
+    }
+    return { photos };
   }
 
   render() {
